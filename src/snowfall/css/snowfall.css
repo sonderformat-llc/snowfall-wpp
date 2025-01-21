@@ -1,0 +1,35 @@
+/* Snowfall container */
+#snowfall-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ignore mouse events */
+    z-index: 9999;
+
+}
+
+/* Snowflake styles */
+.snowflake {
+    position: absolute;
+    top: 0;
+    color: #fafeff;
+    font-size: 2em;
+    font-family: Arial, sans-serif;
+    animation: fall-sway 10s linear infinite; /* Use a combined animation */
+    opacity: 0.5; /* Lightly transparent snowflakes */
+}
+
+/* Combined animation for falling and swaying */
+@keyframes fall-sway {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(60px) translateY(50vh); /* Sway right while halfway down */
+    }
+    100% {
+        transform: translateX(0) translateY(100vh); /* Back to center at the bottom */
+    }
+}
