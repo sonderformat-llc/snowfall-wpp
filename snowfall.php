@@ -7,7 +7,7 @@ Author: esc
 */
 
 // Plugin Updater
-require_once __DIR__ . 'class-updater-checker.php'; // Use your path to file
+require_once __DIR__ . '/class-updater-checker.php'; // Use your path to file
 
 use wpp\snowfall\Updater_Checker; // Use your namespace
 
