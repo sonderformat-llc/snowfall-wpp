@@ -1,0 +1,17 @@
+{
+  "name": "Snowfall",
+  "slug": "4.3",
+  "author": "escii",
+  "author_profile": "https://escii.ch/",
+  "version": "4.3",
+  "download_url": "https://github.com/escii/snowfall-wpp/releases/download/4.3/snowfall-wpp-4.3.zip",
+  "requires": "4.7",
+  "tested": "5.4",
+  "requires_php": "7.0",
+  "last_updated": "2025-01-21T18:06:42.415Z",
+  "sections": {
+    "description": "",
+    "installation": "",
+    "changelog": []
+  }
+}
