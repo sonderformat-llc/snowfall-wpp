@@ -4,14 +4,27 @@
   "author": "escii",
   "author_profile": "https://escii.ch/",
   "version": "4.3",
-  "download_url": "https://github.com/escii/snowfall-wpp/releases/download/v1.0.0/snowfall-wpp-v1.0.0.zip",
-  "requires": "4.7",
-  "tested": "5.4",
-  "requires_php": "7.0",
-  "last_updated": "2025-01-21T23:56:03.441Z",
+  "download_url": "https://github.com/escii/snowfall-wpp/releases/download/main/snowfall-wpp-main.zip",
+  "requires": "5.5",
+  "tested": "6.7",
+  "requires_php": "7.4",
+  "last_updated": "2025-01-22T09:20:15.815Z",
   "sections": {
-    "description": "",
-    "installation": "",
-    "changelog": []
+    "description": "Some description goes here",
+    "installation": "1. Upload the plugin files to the WordPress\n2. Activate the plugin in WordPress",
+    "changelog": [
+      {
+        "version": "1.1.0",
+        "changes": [
+          "Fix: testing version change"
+        ]
+      },
+      {
+        "version": "1.0.0",
+        "changes": [
+          "First Release"
+        ]
+      }
+    ]
   }
 }
