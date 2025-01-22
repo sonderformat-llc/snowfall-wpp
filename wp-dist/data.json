@@ -8,7 +8,7 @@
   "requires": "5.5",
   "tested": "6.7",
   "requires_php": "7.4",
-  "last_updated": "2025-01-22T09:20:15.815Z",
+  "last_updated": "2025-01-22T09:21:40.755Z",
   "sections": {
     "description": "Some description goes here",
     "installation": "1. Upload the plugin files to the WordPress\n2. Activate the plugin in WordPress",
