@@ -1,9 +1,15 @@
 <?php
 /*
 Plugin Name: Snowfall Effect
+Plugin URI: http://syrakus.local/
 Description: Adds a beautiful snowfall effect to your WordPress site.
-Version: 1.1.9
-Author: esc
+Version: 1.1.10
+Author: escii
+Author URI: https://escii.ch
+License: GPL2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: snowfall-wpp
+Domain Path: /languages
 */
 
 // Plugin Updater
@@ -14,7 +20,7 @@ use wpp\snowfall\Updater_Checker; // Use your namespace
 $github_username = 'escii'; // Use your gitbub username
 $github_repository = 'snowfall-wpp'; // Use your repository name
 $plugin_basename = plugin_basename( __FILE__ ); // Check note below
-$plugin_current_version = '1.1.9'; // Use the current version of the plugin
+$plugin_current_version = '1.1.10'; // Use the current version of the plugin
 
 $updater = new Updater_Checker(
     $github_username,
