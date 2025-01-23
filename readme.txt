@@ -21,6 +21,12 @@ Some description goes here
 
 == Changelog ==
 
+= 1.1.3 =
+* Fix: testing version change
+
+= 1.1.2 =
+* Fix: testing version change
+
 = 1.1.1 =
 * Fix: testing version change
 
