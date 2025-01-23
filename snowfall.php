@@ -2,7 +2,7 @@
 /*
 Plugin Name: Snowfall Effect
 Description: Adds a beautiful snowfall effect to your WordPress site.
-Version: 1.1.5
+Version: 1.1.7
 Author: esc
 */
 
@@ -14,7 +14,7 @@ use wpp\snowfall\Updater_Checker; // Use your namespace
 $github_username = 'escii'; // Use your gitbub username
 $github_repository = 'snowfall-wpp'; // Use your repository name
 $plugin_basename = plugin_basename( __FILE__ ); // Check note below
-$plugin_current_version = '1.1.6'; // Use the current version of the plugin
+$plugin_current_version = '1.1.7'; // Use the current version of the plugin
 
 $updater = new Updater_Checker(
     $github_username,
