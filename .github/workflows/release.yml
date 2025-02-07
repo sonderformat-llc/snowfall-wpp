@@ -130,7 +130,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
         run: |
-          gh workflow run generate-dist-file.yml --ref refs/tags/$PRERELEASE_TAG
+          gh workflow run generate-dist-file.yml --ref refs/tags/$RELEASE_TAG
 
       - name: Sync prerelease manifest
         env:
