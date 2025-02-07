@@ -4,11 +4,11 @@
   "author": "escii",
   "author_profile": "https://escii.ch/",
   "version": "1.1.10",
-  "download_url": "https://github.com/sonderformat-llc/snowfall-wpp/releases/download/v1.1.11-rc/snowfall-wpp-v1.1.11-rc.zip",
+  "download_url": "https://github.com/sonderformat-llc/snowfall-wpp/releases/download/v1.1.11-rc.1/snowfall-wpp-v1.1.11-rc.1.zip",
   "requires": "5.5",
   "tested": "6.7",
   "requires_php": "7.4",
-  "last_updated": "2025-02-07T22:53:24.125Z",
+  "last_updated": "2025-02-07T23:00:54.454Z",
   "sections": {
     "description": "Some description goes here",
     "installation": "1. Upload the plugin files to the WordPress\n2. Activate the plugin in WordPress",
