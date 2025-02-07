@@ -4,7 +4,7 @@ Plugin Name: Snowfall Effect
 Plugin URI: http://syrakus.local/
 Description: Adds a beautiful snowfall effect to your WordPress site.
 Version: 1.1.10
-Author: escii
+Author: escii, Aaron-Ritter
 Author URI: https://escii.ch
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
