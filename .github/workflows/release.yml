@@ -98,7 +98,7 @@ jobs:
           release-tag: ${{ needs.prerelease-prep.outputs.tag_name }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: $release-tag
+          release-tag: ${{ env.release-tag }}
 
   # This job runs creates the Prerelease and creates a subsequent Release Pull Request
   prerelease:
