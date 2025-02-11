@@ -131,7 +131,7 @@ jobs:
       # Upload the release asset
       - name: Upload Release Asset
         env:
-          GITHUB_TOKEN: ${{ inputs.github-token }}
+          GH_TOKEN: ${{ inputs.github-token }}
         run: |
           gh release upload ${{ env.TAG }} ./${{ env.FILENAME }} --clobber
 
@@ -141,6 +141,17 @@ jobs:
         with:
           config-file: ".github/release-config.json"
           manifest-file: ".github/release-manifest.json"
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: release-please--branches--main
+
+      # Generate the dist file for the plugin
+      - name: Run WP Self-Host Update JSON Generator
+        uses: sonderformat-llc/wp-self-host-updater-generator@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   post-prerelease:
     name: Post Prerelease Steps
@@ -164,13 +175,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
 
-      - name: Release Build Push Deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RELEASE_TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
-        run: |
-          gh workflow run generate-dist-file.yml --ref refs/tags/$RELEASE_TAG
-
       - name: Sync prerelease manifest
         env:
           MANIFEST_PATH: .github/prerelease-manifest.json
@@ -186,6 +190,35 @@ jobs:
           git add . $MANIFEST_PATH
           git commit -m "chore: sync release manifests"
           git push
+
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        env:
+          ref: ${{ needs.prerelease-prep.outputs.tag_name }}
+
+      # Define vars for the release asset
+      - name: Define vars
+        env:
+          RELEASE_TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
+        run: |
+          echo "USERNAME=${{ github.repository_owner }}" >> $GITHUB_ENV
+          echo "REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "TAG=$RELEASE_TAG" >> $GITHUB_ENV
+          echo "FILENAME=${{ github.event.repository.name }}-$RELEASE_TAG.zip" >> $GITHUB_ENV
+        shell: bash
+
+      # Generate the release ZIP
+      - name: Generate release ZIP
+        run: |
+          git archive --format=zip --prefix=${{ env.REPO }}/ --output=${{ env.FILENAME }} HEAD
+        shell: bash
+
+      # Upload the release asset
+      - name: Upload Release Asset
+        env:
+          GH_TOKEN: ${{ inputs.github-token }}
+        run: |
+          gh release upload ${{ env.TAG }} ./${{ env.FILENAME }} --clobber
 
   # This job runs post-release steps
   post-release:
