@@ -130,14 +130,10 @@ jobs:
 
       # Upload the release asset
       - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ env.FILENAME }}
-          asset_name: ${{ env.FILENAME }}
-          asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ inputs.github-token }}
+        run: |
+          gh release upload ${{ env.TAG }} ./${{ env.FILENAME }} --clobber
 
       # Run release-please to create the release PR
       - name: Run release release-please
