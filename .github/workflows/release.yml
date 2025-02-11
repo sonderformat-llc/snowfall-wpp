@@ -94,9 +94,11 @@ jobs:
 
       - name: Run WP Self-Host Update JSON Generator
         uses: sonderformat-llc/wp-self-host-updater-generator@main
+        env:
+          release-tag: ${{ needs.prerelease-prep.outputs.tag_name }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: ${{ needs.prerelease-prep.outputs.tag_name }}
+          release-tag: $release-tag
 
   # This job runs creates the Prerelease and creates a subsequent Release Pull Request
   prerelease:
