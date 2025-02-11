@@ -116,6 +116,7 @@ jobs:
         run: |
           gh workflow run generate-dist-file.yml --ref refs/tags/$PRERELEASE_TAG
 
+      # Run release-please to create the release PR
       - name: Run release release-please
         uses: googleapis/release-please-action@v4.1.3
         with:
