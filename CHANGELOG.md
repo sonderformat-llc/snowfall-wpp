@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.13-rc.5](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.4...v1.1.13-rc.5) (2025-02-11)
+
+
+### Bug Fixes
+
+* **release:** add release steps ([ab5a8f2](https://github.com/sonderformat-llc/snowfall-wpp/commit/ab5a8f2f26c4fda95e1e801f4d0890e479bad2e8))
+
 ## [1.1.13-rc.4](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.3...v1.1.13-rc.4) (2025-02-11)
 
 
