@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.13-rc.4](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.3...v1.1.13-rc.4) (2025-02-11)
+
+
+### Bug Fixes
+
+* **release:** use gh command instead of archived action ([e37cf51](https://github.com/sonderformat-llc/snowfall-wpp/commit/e37cf513642989eed8290371399f425fd3e4c60b))
+
 ## [1.1.13-rc.3](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.2...v1.1.13-rc.3) (2025-02-11)
 
 
