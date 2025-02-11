@@ -92,6 +92,7 @@ jobs:
         with:
           ref: release-please--branches--main
 
+      # Generate the dist file for the plugin
       - name: Run WP Self-Host Update JSON Generator
         uses: sonderformat-llc/wp-self-host-updater-generator@main
         env:
