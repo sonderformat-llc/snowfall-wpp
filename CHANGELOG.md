@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.13-rc.2](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.1...v1.1.13-rc.2) (2025-02-11)
+
+
+### Bug Fixes
+
+* **release:** use env for tag ([3c14892](https://github.com/sonderformat-llc/snowfall-wpp/commit/3c148923de571132f45ced17f2291408f14547ff))
+
 ## [1.1.13-rc.1](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc...v1.1.13-rc.1) (2025-02-11)
 
 
