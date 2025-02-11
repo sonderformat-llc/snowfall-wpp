@@ -77,7 +77,7 @@ jobs:
     steps:
       - name: End To End Test
         run: |
-          echo "Running end to end tests for prerelease!"
+          echo "Running end to end tests for prerelease."
 
   # This job creates additional files for the prerelease
   prerelease-build:
