@@ -108,34 +108,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
-
-      - name: Prerelease Build Push Deploy
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PRERELEASE_TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
-        run: |
-          gh workflow run generate-dist-file.yml --ref refs/tags/$PRERELEASE_TAG
-
-      # Run release-please to create the release PR
-      - name: Run release release-please
-        uses: googleapis/release-please-action@v4.1.3
-        with:
-          config-file: ".github/release-config.json"
-          manifest-file: ".github/release-manifest.json"
-
-  post-prerelease:
-    name: Post Prerelease Steps
-    runs-on: ubuntu-latest
-    needs: [ prerelease ]
-    # This job runs only if a release was created and the tag name contains 'rc'
-    if: ${{ needs.prerelease-prep.outputs.releases_created == 'true' && contains(needs.prerelease-prep.outputs.tag_name, 'rc') }}
-    steps:
-      - name: Post Prerelease Step
-        run: |
-          echo "Running post-prerelease steps!"
-
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
         env:
           ref: ${{ needs.prerelease-prep.outputs.tag_name }}
 
@@ -146,8 +118,8 @@ jobs:
         run: |
           echo "USERNAME=${{ github.repository_owner }}" >> $GITHUB_ENV
           echo "REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
-          echo "TAG=${{ env.PRERELEASE_TAG }}" >> $GITHUB_ENV
-          echo "FILENAME=${{ github.event.repository.name }}-${{ env.PRERELEASE_TAG }}.zip" >> $GITHUB_ENV
+          echo "TAG=$PRERELEASE_TAG" >> $GITHUB_ENV
+          echo "FILENAME=${{ github.event.repository.name }}-$PRERELEASE_TAG.zip" >> $GITHUB_ENV
         shell: bash
 
       # Generate the release ZIP
@@ -167,6 +139,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ inputs.github-token }}
 
+      # Run release-please to create the release PR
+      - name: Run release release-please
+        uses: googleapis/release-please-action@v4.1.3
+        with:
+          config-file: ".github/release-config.json"
+          manifest-file: ".github/release-manifest.json"
+
+  post-prerelease:
+    name: Post Prerelease Steps
+    runs-on: ubuntu-latest
+    needs: [ prerelease ]
+    # This job runs only if a release was created and the tag name contains 'rc'
+    if: ${{ needs.prerelease-prep.outputs.releases_created == 'true' && contains(needs.prerelease-prep.outputs.tag_name, 'rc') }}
+    steps:
+      - name: Post Prerelease Step
+        run: |
+          echo "Running post-prerelease steps!"
 
   # This job creates the final release and Syncs the prerelease manifest
   release:
