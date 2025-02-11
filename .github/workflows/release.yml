@@ -66,11 +66,6 @@ jobs:
         with:
           config-file: ".github/prerelease-config.json"
           manifest-file: ".github/prerelease-manifest.json"
-      - name: Print release outputs for debugging
-        continue-on-error: true
-        run: |
-          echo "Release outputs:"
-          echo "${{ toJson(steps.release.outputs) }}"
 
   # This job runs tests before the creation of the prerelease
   prerelease-test:
@@ -79,12 +74,7 @@ jobs:
     needs: [ prerelease-prep ]
     # This job runs only if there was no release created
     if: ${{ needs.prerelease-prep.outputs.releases_created == 'false' }}
-    env:
-      TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
     steps:
-      - name: Echo Tag
-        run: |
-          echo "Tag: $TAG"
       - name: End To End Test
         run: |
           echo "Running end to end tests for prerelease!"
@@ -96,13 +86,7 @@ jobs:
     needs: [ prerelease-prep ]
     # This job runs only if there was no release created
     if: ${{ needs.prerelease-prep.outputs.releases_created == 'false' }}
-    env:
-      TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
     steps:
-      - name: Echo Tag
-        run: |
-          echo "Tag: $TAG"
-
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
         with:
@@ -111,11 +95,8 @@ jobs:
       # Generate the dist file for the plugin
       - name: Run WP Self-Host Update JSON Generator
         uses: sonderformat-llc/wp-self-host-updater-generator@main
-        env:
-          release-tag: ${{ needs.prerelease-prep.outputs.tag_name }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          release-tag: ${{ env.TAG }}
 
   # This job runs creates the Prerelease and creates a subsequent Release Pull Request
   prerelease:
