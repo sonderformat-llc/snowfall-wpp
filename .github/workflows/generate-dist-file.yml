@@ -13,9 +13,7 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          ref: main
+        uses: actions/checkout@v4.2.2
 
       - name: Run WP Self-Host Update JSON Generator
         uses: sonderformat-llc/wp-self-host-updater-generator@main
