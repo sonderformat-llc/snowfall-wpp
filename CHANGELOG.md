@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.13-rc.3](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.2...v1.1.13-rc.3) (2025-02-11)
+
+
+### Bug Fixes
+
+* **release:** move artifact in to prerelease ([5166c58](https://github.com/sonderformat-llc/snowfall-wpp/commit/5166c5831904fe733e8da3b56c2161379c53ae95))
+
 ## [1.1.13-rc.2](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.1...v1.1.13-rc.2) (2025-02-11)
 
 
