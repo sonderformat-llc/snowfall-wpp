@@ -89,6 +89,10 @@ jobs:
     env:
       TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
     steps:
+      - name: Echo Tag
+        run: |
+          echo "Tag: $TAG"
+
       - name: Checkout Repository
         uses: actions/checkout@v4.2.2
         with:
