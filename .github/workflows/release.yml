@@ -66,6 +66,11 @@ jobs:
         with:
           config-file: ".github/prerelease-config.json"
           manifest-file: ".github/prerelease-manifest.json"
+      - name: Print release outputs for debugging
+        continue-on-error: true
+        run: |
+          echo "Release outputs:"
+          echo "${{ toJson(steps.release.outputs) }}"
 
   # This job runs tests before the creation of the prerelease
   prerelease-test:
