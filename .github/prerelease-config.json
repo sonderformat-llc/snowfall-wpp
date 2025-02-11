@@ -6,7 +6,7 @@
   "include-component-in-tag": false,
   "packages": {
     ".": {
-      "extra-files": ["snowfall.php", "build.gradle.kts"]
+      "extra-files": ["snowfall.php", "build.gradle.kts", "readme.txt"]
     }
   }
 }
