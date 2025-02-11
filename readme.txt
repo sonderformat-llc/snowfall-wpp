@@ -5,7 +5,7 @@ Tags: snow, snowfall
 Requires at least: 5.5
 Tested up to: 6.7
 <!-- x-release-please-start-version -->
-Stable tag: 1.1.13-rc.4
+Stable tag: 1.1.13-rc.5
 <!-- x-release-please-end -->
 Requires PHP: 7.4
 License: GPLv2 or later
