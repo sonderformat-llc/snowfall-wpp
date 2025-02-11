@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.13-rc.7](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.6...v1.1.13-rc.7) (2025-02-11)
+
+
+### Bug Fixes
+
+* **release:** GH_TOKEN ([68dcdb7](https://github.com/sonderformat-llc/snowfall-wpp/commit/68dcdb7f572d851549965704369c1b3988e1366f))
+
 ## [1.1.13-rc.6](https://github.com/sonderformat-llc/snowfall-wpp/compare/v1.1.13-rc.5...v1.1.13-rc.6) (2025-02-11)
 
 
