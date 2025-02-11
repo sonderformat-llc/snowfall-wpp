@@ -1,14 +1,14 @@
 {
   "name": "Snowfall",
-  "slug": "1.1.13-rc.7",
+  "slug": "1.1.13",
   "author": "escii",
   "author_profile": "https://escii.ch/",
-  "version": "1.1.13-rc.7",
-  "download_url": "https://github.com/sonderformat-llc/snowfall-wpp/releases/download/v1.1.13-rc.7/snowfall-wpp-v1.1.13-rc.7.zip",
+  "version": "1.1.13",
+  "download_url": "https://github.com/sonderformat-llc/snowfall-wpp/releases/download/v1.1.13/snowfall-wpp-v1.1.13.zip",
   "requires": "5.5",
   "tested": "6.7",
   "requires_php": "7.4",
-  "last_updated": "2025-02-11T23:40:10.984Z",
+  "last_updated": "2025-02-11T23:41:20.521Z",
   "sections": {
     "description": "Some description goes here",
     "installation": "1. Upload the plugin files to the WordPress\n2. Activate the plugin in WordPress",
