@@ -96,6 +96,7 @@ jobs:
         uses: sonderformat-llc/wp-self-host-updater-generator@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          release-tag: ${{ needs.prerelease-prep.outputs.tag_name }}
 
   # This job runs creates the Prerelease and creates a subsequent Release Pull Request
   prerelease:
@@ -139,12 +140,12 @@ jobs:
 
       - name: Define vars
         env:
-          RELEASE_TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
+          PRERELEASE_TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
         run: |
           echo "USERNAME=${{ github.repository_owner }}" >> $GITHUB_ENV
           echo "REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
-          echo "TAG=$RELEASE_TAG" >> $GITHUB_ENV
-          echo "FILENAME=${{ github.event.repository.name }}-${{ github.ref_name }}.zip" >> $GITHUB_ENV
+          echo "TAG=$PRERELEASE_TAG" >> $GITHUB_ENV
+          echo "FILENAME=${{ github.event.repository.name }}-$PRERELEASE_TAG.zip" >> $GITHUB_ENV
         shell: bash
 
       - name: Generate release ZIP
