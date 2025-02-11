@@ -41,7 +41,7 @@ jobs:
 
       - name: Add labels to the repository if not present
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.GITHUB_TOKEN }}
         run: |
           gh label create "autorelease: pending" -c FBCA04 -d "release-please PR tagging - Pending release" || true
           gh label create "autorelease: tagged" -c D4C5F9 -d "release-please PR tagging - Ready for release" || true
@@ -131,7 +131,7 @@ jobs:
       # Upload the release asset
       - name: Upload Release Asset
         env:
-          GH_TOKEN: ${{ inputs.github-token }}
+          GH_TOKEN: ${{ github.GITHUB_TOKEN }}
         run: |
           gh release upload ${{ env.TAG }} ./${{ env.FILENAME }} --clobber
 
@@ -216,7 +216,7 @@ jobs:
       # Upload the release asset
       - name: Upload Release Asset
         env:
-          GH_TOKEN: ${{ inputs.github-token }}
+          GH_TOKEN: ${{ github.GITHUB_TOKEN }}
         run: |
           gh release upload ${{ env.TAG }} ./${{ env.FILENAME }} --clobber
 
