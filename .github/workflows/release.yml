@@ -132,6 +132,37 @@ jobs:
         run: |
           echo "Running post-prerelease steps!"
 
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        env:
+          ref: ${{ needs.prerelease-prep.outputs.tag_name }}
+
+      - name: Define vars
+        env:
+          RELEASE_TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
+        run: |
+          echo "USERNAME=${{ github.repository_owner }}" >> $GITHUB_ENV
+          echo "REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "TAG=$RELEASE_TAG" >> $GITHUB_ENV
+          echo "FILENAME=${{ github.event.repository.name }}-${{ github.ref_name }}.zip" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Generate release ZIP
+        run: |
+          git archive --format=zip --prefix=${{ env.REPO }}/ --output=${{ env.FILENAME }} HEAD
+        shell: bash
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./${{ env.FILENAME }}
+          asset_name: ${{ env.FILENAME }}
+          asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ inputs.github-token }}
+
+
   # This job creates the final release and Syncs the prerelease manifest
   release:
     name: Create Release
