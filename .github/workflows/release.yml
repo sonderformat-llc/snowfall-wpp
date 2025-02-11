@@ -139,6 +139,7 @@ jobs:
         env:
           ref: ${{ needs.prerelease-prep.outputs.tag_name }}
 
+      # Define vars for the release asset
       - name: Define vars
         env:
           PRERELEASE_TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
@@ -149,11 +150,13 @@ jobs:
           echo "FILENAME=${{ github.event.repository.name }}-$PRERELEASE_TAG.zip" >> $GITHUB_ENV
         shell: bash
 
+      # Generate the release ZIP
       - name: Generate release ZIP
         run: |
           git archive --format=zip --prefix=${{ env.REPO }}/ --output=${{ env.FILENAME }} HEAD
         shell: bash
 
+      # Upload the release asset
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         with:
