@@ -92,27 +92,10 @@ jobs:
         with:
           ref: release-please--branches--main
 
-      - name: Define vars
-        run: |
-          echo "USERNAME=${{ github.repository_owner }}" >> $GITHUB_ENV
-          echo "REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
-          echo "TAG=${{ needs.prerelease-prep.outputs.tag_name }}" >> $GITHUB_ENV
-          echo "FILENAME=${{ github.event.repository.name }}-${{ github.ref_name }}.zip" >> $GITHUB_ENV
-        shell: bash
-
-      - name: Generate JSON
-        run: |
-          node ${{ github.action_path }}/src/create-json.js
-        shell: bash
-
-      - name: Commit JSON to Main
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "GitHub Actions"
-          git add .
-          git commit -m "Update JSON for version $TAG"
-          git push
-        shell: bash
+      - name: Run WP Self-Host Update JSON Generator
+        uses: sonderformat-llc/wp-self-host-updater-generator@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
   # This job runs creates the Prerelease and creates a subsequent Release Pull Request
   prerelease:
