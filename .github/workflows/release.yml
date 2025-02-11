@@ -79,6 +79,41 @@ jobs:
         run: |
           echo "Running end to end tests for prerelease!"
 
+  # This job creates additional files for the prerelease
+  prerelease-build:
+    name: Run Prerelease Tests
+    runs-on: ubuntu-latest
+    needs: [ prerelease-prep ]
+    # This job runs only if there was no release created
+    if: ${{ needs.prerelease-prep.outputs.releases_created == 'false' }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: release-please--branches--main
+
+      - name: Define vars
+        run: |
+          echo "USERNAME=${{ github.repository_owner }}" >> $GITHUB_ENV
+          echo "REPO=${{ github.event.repository.name }}" >> $GITHUB_ENV
+          echo "TAG=${{ needs.prerelease-prep.outputs.tag_name }}" >> $GITHUB_ENV
+          echo "FILENAME=${{ github.event.repository.name }}-${{ github.ref_name }}.zip" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Generate JSON
+        run: |
+          node ${{ github.action_path }}/src/create-json.js
+        shell: bash
+
+      - name: Commit JSON to Main
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Update JSON for version $TAG"
+          git push
+        shell: bash
+
   # This job runs creates the Prerelease and creates a subsequent Release Pull Request
   prerelease:
     name: Create Prerelease and Release Pull Request
