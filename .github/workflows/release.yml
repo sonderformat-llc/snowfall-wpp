@@ -74,7 +74,12 @@ jobs:
     needs: [ prerelease-prep ]
     # This job runs only if there was no release created
     if: ${{ needs.prerelease-prep.outputs.releases_created == 'false' }}
+    env:
+      TAG: ${{ needs.prerelease-prep.outputs.tag_name }}
     steps:
+      - name: Echo Tag
+        run: |
+          echo "Tag: $TAG"
       - name: End To End Test
         run: |
           echo "Running end to end tests for prerelease!"
